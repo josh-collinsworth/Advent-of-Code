@@ -6,7 +6,6 @@ let threes = 0;
 ids.forEach(id => {
     splitID = [...id].sort();
     let lettersArray = [];
-    console.log(splitID);
 
     var results = [];
     for (let i = 0; i < splitID.length - 1; i++) {
@@ -15,13 +14,10 @@ ids.forEach(id => {
         }
     }
 
-    console.log(results);
-
     if (results) {
         const resultsSet = new Set(results);
         if (resultsSet.size != results.length) {
             threes++;
-            console.log('triplets!');
         }
         let doubles = [];
         for (let i = 0; i < results.length; i++) {
@@ -31,7 +27,6 @@ ids.forEach(id => {
         }
         if (doubles.length > 0 || results.length === 1) {
             twos++;
-            console.log('doubles!')
         }
     }
 });
