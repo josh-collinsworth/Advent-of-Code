@@ -5,7 +5,6 @@
     
 alphabet.forEach(letter => {
     const match = new RegExp(letter, 'gi')
-    console.log(letter, letter.toUpperCase());
     let modifiedInput = input.replace(match, '').split('');
 
 let i = 0;
@@ -21,5 +20,4 @@ while(i < modifiedInput.length - 1){
 results.push(modifiedInput.join('').length);
 
 });
-console.log('-------------------------------------------------')
 console.log(results.sort().reverse()[0]);
