@@ -1053,10 +1053,10 @@
         if (!lastAction) {
             for (i = lastMinute; i < minute; i++) {
                 allTheTimes[date][i].includes(currentGuard) ? null : allTheTimes[date][i].push(currentGuard);
-                if (!allTheMinutes[i]) {
+                if(!allTheMinutes[i]){
                     allTheMinutes[i] = {};
                 }
-                if (allTheMinutes[i] && allTheMinutes[i].hasOwnProperty(`${currentGuard}`)) {
+                if (allTheMinutes[i] && allTheMinutes[i].hasOwnProperty(`${currentGuard}`)){ 
                     allTheMinutes[i][`${currentGuard}`]++
                 } else {
                     allTheMinutes[i][`${currentGuard}`] = 1;
@@ -1094,10 +1094,10 @@
     }
 
     const guardInfo = Object.entries(guards);
-    let mostSlept = [[], []];
+    let mostSlept = [[],[]];
 
     guardInfo.forEach(guard => {
-        if (guard[1] > mostSlept[1]) {
+        if(guard[1] > mostSlept[1]){
             mostSlept = guard;
         }
     });
@@ -1118,4 +1118,23 @@
     const guardTotals = parseInt(Object.entries(guards).filter(id => id[1] == highestSleepNo ? id[0] : ''));
 
     console.log(`Part one solution: ${guardTotals * highestSleepNo}`);
+    
+
+    //Find the answer for part two 
+    let mostMinutes = [[],[]];
+    let minuteSlept;
+
+    allTheMinutes.forEach((minute, index) => {
+        if(minute){
+            const entries = Object.entries(minute);
+            entries.forEach(entry => {
+                if(entry[1] > mostMinutes[1]) {
+                    mostMinutes = entry;
+                    minuteSlept = index;
+                }
+            });
+        }
+    });
+
+    console.log(`Part two solution: ${mostMinutes[0] * (minuteSlept - 60)}`);
 </script>

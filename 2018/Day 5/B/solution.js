@@ -12,7 +12,7 @@ alphabet.forEach(letter => {
     while(i < modifiedInput.length - 1){
         if(modifiedInput[i].toUpperCase() == modifiedInput[i + 1].toUpperCase() && modifiedInput[i] != modifiedInput[i+1]){
             modifiedInput.splice(i, 2);
-        i = 0;
+            i = 0;
         } else {
             i++;
         }
