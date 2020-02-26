@@ -1,0 +1,61 @@
+<script>
+	let input = `R75,D30,R83,U83,L12,D49,R71,U7,L72
+U62,R66,U55,R34,D71,R55,D58,R83`
+	
+	input = input.split(/(","|\n)/)
+		.map(set => set.split(","))
+		.filter(set => set[0] != "\n");
+
+	console.log(input);
+
+
+	// PART ONE //
+	const grid = new Array(400).fill([]);
+	console.log(grid);
+	grid.forEach((r, i) => {
+		grid[i] = new Array(400).fill('.');
+	})
+
+	let startingPoint = [200, 200]
+	let [y, x]= startingPoint;
+	
+	grid[y][x] = 'O';
+
+	input.forEach(set => {
+		let [y, x]  = startingPoint;
+		set.forEach(step => {
+			const [dir, steps] = step.split(/([0-9]+)/);
+
+			for(i = 1; i <= steps; i++){
+				switch(dir){
+					case 'U':
+						y--;
+						grid[y][x] = grid[y][x] == '.' ? '|' : '+';
+						break;
+					case 'D':
+						y++
+						grid[y][x] = grid[y][x] == '.' ? '|' : '+';
+						break;
+					case 'L':
+						x--
+						grid[y][x] = grid[y][x] == '.' ? '-' : '+';
+						break;
+					case 'R':
+						x++
+						grid[y][x] = grid[y][x] == '.' ? '-' : '+';
+						break;
+				}
+			}
+
+		});
+	});
+
+	const finalGrid = grid.map(row => row.join("")).join("\n");
+
+	console.log(finalGrid);
+
+
+	// PART TWO //
+
+
+</script>
